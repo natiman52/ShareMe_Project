@@ -24,16 +24,18 @@ function UserProfile({user}) {
   const [ActiveBtn,setActiveBtn] = React.useState("Created")
   const navigate = useNavigate()
   const {userId} = useParams()
-  const randomImage = async () => {
-  await axios("https://api.unsplash.com/photos/random/?client_id=detKj4wQ0KHTLJmvU-SuiALx8I3sW_iiif6w40N_18k&query=Technology,Nature&count=1").then(e =>{
-   setImage(e.data[0].urls.full)
-})
-}
   const logout = () =>{
     window.localStorage.clear()
     navigate('/login')
   }
   React.useEffect( () =>{
+    const randomImage = async () => {
+  await axios("https://api.unsplash.com/photos/random/?client_id=detKj4wQ0KHTLJmvU-SuiALx8I3sW_iiif6w40N_18k&query=Technology,Nature&count=1").then(e =>{
+   setImage(e.data[0].urls.full)
+  }).error(e=>{
+    console.log(e.response())
+  })
+  }
     randomImage()
     const query = userQuery(userId)
     client.fetch(query).then( data => {
@@ -60,6 +62,7 @@ function UserProfile({user}) {
       )
     }
   },[Text,userId])
+  console.log(image)
   if(!User and !image) return <Spinner message="loading profile..." />
   return (
     <div className='relative pb-2 h-full justify-center items-center'>
