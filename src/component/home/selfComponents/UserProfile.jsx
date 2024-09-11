@@ -69,7 +69,7 @@ function UserProfile({user}) {
       <div className='flex flex-col pb-5'>
         <div className='relative flex flex-col mb-7'>
           <div className='flex flex-col items-center justify-center'>
-    <img className='w-full h-370 2xl:h-510 shadow-lg object-cover' src={imageurl} alt="banner" />
+    <img className='w-full h-370 2xl:h-510 shadow-lg object-cover' src={imageurl && imageurl} alt="banner" />
           <img src={User.image} className='rounded-full w-23 h-23 -mt-10 shadow-xl object-cover' alt="" />
           <h1 className="font-bold text-3xl text-center mt-3 ">
             {User.username}
