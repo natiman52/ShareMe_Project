@@ -32,6 +32,7 @@ function UserProfile({user}) {
   const randomImage = async () => {
   await axios("https://api.unsplash.com/photos/random/?client_id=detKj4wQ0KHTLJmvU-SuiALx8I3sW_iiif6w40N_18k&query=Technology,Nature&count=1").then(e =>{
    setImage(e.data[0].urls.full)
+    console.log(e.data[0].urls.full)
   }).error(e=>{
     console.log(e.response())
   })
