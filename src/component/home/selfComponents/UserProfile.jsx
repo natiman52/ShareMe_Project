@@ -65,7 +65,7 @@ function UserProfile({user}) {
     }
   },[Text,userId])
   console.log(image)
-  if(!User and !image) return <Spinner message="loading profile..." />
+  if(!User && !image) return <Spinner message="loading profile..." />
   return (
     <div className='relative pb-2 h-full justify-center items-center'>
       <div className='flex flex-col pb-5'>
