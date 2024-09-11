@@ -12,7 +12,7 @@ function App() {
     }
   },[window.localStorage.getItem("user")])
   return (
-    <GoogleOAuthProvider clientId='1089074278120-h8o7tpiro5vau09hr4k8m775bas3s9rk.apps.googleusercontent.com'>
+    <GoogleOAuthProvider clientId='65895017028-ii139g3ovkrurmhkbaevr6dkmq19aq9l.apps.googleusercontent.com'>
     <Routes>
       <Route path='/*' element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
