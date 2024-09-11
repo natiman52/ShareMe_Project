@@ -8,7 +8,7 @@ import {googleLogout } from "@react-oauth/google"
 import Spinner from '../../../Extras/Spinner'
 import axios from 'axios'
 const randomImage = axios("https://api.unsplash.com/photos/random/?client_id=detKj4wQ0KHTLJmvU-SuiALx8I3sW_iiif6w40N_18k&query=Technology,Nature&count=1").then(e =>{
-  return e[0].urls.full
+  return e.data[0].urls.full
 })
 
 
