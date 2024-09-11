@@ -17,7 +17,7 @@ const notActive ="bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 out
 
 function UserProfile({user}) {
   const [User,setUser] = React.useState(null)
-  const [image,setImage] =React.useState(null)
+  const [imageurl,setImage] =React.useState(null)
   const [loading,setLoading] = React.useState()
   const [Text,setText] =React.useState("Created")
   const [Pins,setPins] =React.useState()
@@ -28,8 +28,8 @@ function UserProfile({user}) {
     window.localStorage.clear()
     navigate('/login')
   }
-  React.useEffect(() =>{
-        const randomImage = async () => {
+  React.useEffect( () =>{
+  const randomImage = async () => {
   await axios("https://api.unsplash.com/photos/random/?client_id=detKj4wQ0KHTLJmvU-SuiALx8I3sW_iiif6w40N_18k&query=Technology,Nature&count=1").then(e =>{
    setImage(e.data[0].urls.full)
   }).error(e=>{
@@ -37,8 +37,6 @@ function UserProfile({user}) {
   })
   }
     randomImage()
-  },[])
-  React.useEffect( () =>{
     const query = userQuery(userId)
     client.fetch(query).then( data => {
       setUser(data[0])
@@ -64,14 +62,13 @@ function UserProfile({user}) {
       )
     }
   },[Text,userId])
-  console.log(image)
   if(!User && !image) return <Spinner message="loading profile..." />
   return (
     <div className='relative pb-2 h-full justify-center items-center'>
       <div className='flex flex-col pb-5'>
         <div className='relative flex flex-col mb-7'>
           <div className='flex flex-col items-center justify-center'>
-    <img className='w-full h-370 2xl:h-510 shadow-lg object-cover' src={image} alt="banner" />
+    <img className='w-full h-370 2xl:h-510 shadow-lg object-cover' src={imageurl} alt="banner" />
           <img src={User.image} className='rounded-full w-23 h-23 -mt-10 shadow-xl object-cover' alt="" />
           <h1 className="font-bold text-3xl text-center mt-3 ">
             {User.username}
