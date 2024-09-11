@@ -17,7 +17,7 @@ const notActive ="bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 out
 
 function UserProfile({user}) {
   const [User,setUser] = React.useState(null)
-  const [imageurl,setImage] =React.useState(null)
+  const [imageurl,setImage] =React.useState(false)
   const [loading,setLoading] = React.useState()
   const [Text,setText] =React.useState("Created")
   const [Pins,setPins] =React.useState()
